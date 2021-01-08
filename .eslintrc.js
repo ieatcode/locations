@@ -22,6 +22,8 @@ module.exports = {
         "react"
     ],
     "rules": {
-        "no-undef": 0
+        "no-undef": 0,
+        "no-unused-vars": 0,
+        "react/display-name": 0
     }
 };

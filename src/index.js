@@ -1,23 +1,26 @@
 import './scss/main.scss'
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import {Provider} from 'react-redux'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 import configureAppStore from './shared/configs/store.config';
 import App from './pages/app';
 import Switch from 'react-bootstrap/esm/Switch';
-import { Container } from 'react-bootstrap';
+import {Container} from 'react-bootstrap';
+import {Layout} from "antd";
 
 ReactDOM.render(
-  <Provider store={configureAppStore({})}>
+  <Provider store={configureAppStore()}>
     <Router>
-      <Container className="page-wrapper">
-        <Switch>
-          <Route exact path="/">
-            <App />
-          </Route>
-        </Switch>
-      </Container>
+      <Layout style={{height: '100vh'}}>
+        <Container className="page-wrapper">
+          <Switch>
+            <Route exact path="/">
+              <App/>
+            </Route>
+          </Switch>
+        </Container>
+      </Layout>
     </Router>
   </Provider>,
   document.getElementById('root')

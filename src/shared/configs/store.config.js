@@ -12,7 +12,7 @@ const history = createBrowserHistory();
 const saga = createSagaMiddleware();
 const router = routerMiddleware(history);
 
-const configureAppStore = (preloadedState) => {
+const configureAppStore = () => {
     const logger = createLogger({
         collapsed: true,
     });
@@ -23,7 +23,6 @@ const configureAppStore = (preloadedState) => {
         middleware: [
             ...getDefaultMiddleware()
         ],
-        preloadedState,
         enhancers: [composedEnhancers]
     })
     saga.run(rootSaga);

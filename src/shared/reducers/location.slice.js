@@ -1,7 +1,13 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {initActionStatus, successActionStatus, failedActionStatus, resetActionStatus} from "../constants/status.constant";
+import {
+    failedActionStatus,
+    initActionStatus,
+    resetActionStatus,
+    successActionStatus
+} from "../constants/status.constant";
 
 const initialState = {
+    locationList: null,
     status: {...resetActionStatus},
 };
 
@@ -16,8 +22,9 @@ const locationSlice = createSlice({
                 type: 'getList'
             }
         }),
-        getListSuccess: state => ({
+        getListSuccess: (state, {payload}) => ({
             ...state,
+            locationList: payload,
             status: {
                 ...successActionStatus,
                 type: 'getList'
@@ -34,21 +41,21 @@ const locationSlice = createSlice({
             ...state,
             status: {
                 ...initActionStatus,
-                type: 'add'
+                type: 'addLocation'
             }
         }),
         addSuccess: state => ({
             ...state,
             status: {
                 ...successActionStatus,
-                type: 'add'
+                type: 'addLocation'
             }
         }),
         addFailed: state => ({
             ...state,
             status: {
                 ...failedActionStatus,
-                type: 'add'
+                type: 'addLocation'
             }
         }),
         details: state => ({
